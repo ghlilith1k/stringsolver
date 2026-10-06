@@ -15,18 +15,23 @@ Copyright (C) 2026 ghlilith1k, distributed under the GNU/GPLv2 license
     sudo make install
 
 # About
-- current version: none
+- current version: v0.0.1 ALPHA
 
 - current stable: none
 
-- AI code: none
+- AI code: only the Some match arm, line 34
 
 - for future releases: add string scrambling
 
 # Usage
-not defined yet
+- --help:               prints help message.
+- --file=FILE:          file to translate (path).
+- --output=term/FILE:   where to paste output (term is to print it in the terminal,
+-                       FILE is to paste translated file contents in a newly created file, path).
+- --debug:              prints debug info.
 
 # Changelog
 (NFY means not finished yet)
 
-nothing interesting for now...
+## (NFY) release 0.0.1 ALPHA:
+- added --help, --file, --output and --debug options.

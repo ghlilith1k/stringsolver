@@ -15,6 +15,55 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+// DEPENDENCIES
+use std::env;
+
+// MAIN
 fn main() {
-    println!("Hello, world!");
+    
+    // VARIABLES
+    let args: Vec<String> = env::args().collect();
+    let mut selected_file: Option<String> = None;
+    let mut output_location: Option<String> = None;
+    
+    // ARGS PARSER
+    for arg in &args[1..] {
+        let arg = arg.strip_prefix("--").unwrap();
+        
+        match arg.split_once('=') {
+            Some((aarg, vval)) => {
+                match aarg {
+                    "file" => {
+                        selected_file = Some(vval.to_string());
+                    }
+
+                    "output" => {
+                        output_location = Some(vval.to_string());
+                    }
+
+                    _ => {}
+
+                }
+            }
+
+            None => {
+                match arg {
+                    "help" => {
+                        println!(
+                            "stringsolver commands:\n\
+                             \x20 --help                    - prints this message.\n\
+                             \x20 --file=FILE               - file to translate.\n\
+                             \x20 --output=term/FILE        - where to print file content (term to paste contents in foreground,\n\
+                             \x20                             FILE to create a new file with translated content.\n\
+                             \x20 --debug                   - prints debug info."
+                        );
+                    }
+
+                    _ => {}
+
+                }
+            }
+        }
+    }
+
 }
